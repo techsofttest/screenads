@@ -161,6 +161,20 @@ export function ServicesSection() {
                 growth.
               </h2>
             </ScrollReveal>
+
+            {/* Button below header description */}
+            <div className="mt-8 flex justify-start">
+              <ScrollReveal direction="up" delay={0.2}>
+                <Button
+                  href="#contact"
+                  variant="black"
+                  className="gap-4 px-6 py-5"
+                >
+                  Discover All Our Services
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
 
@@ -180,20 +194,6 @@ export function ServicesSection() {
               />
             );
           })}
-        </div>
-
-        {/* Section Bottom Button */}
-        <div className="mt-16 flex justify-start">
-          <ScrollReveal direction="up" delay={0.1}>
-            <Button
-              href="#contact"
-              variant="black"
-              className="gap-4 px-6 py-5"
-            >
-              Discover All Our Services
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </ScrollReveal>
         </div>
       </div>
     </section>

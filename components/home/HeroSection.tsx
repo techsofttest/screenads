@@ -42,7 +42,7 @@ export function HeroSection() {
     >
       {/* Sticky Rainbow Waves in the background pinned strictly within the Hero section boundary */}
       <div className="pointer-events-none sticky top-0 -mt-32 h-0 w-full z-0 overflow-visible">
-        <div className="relative h-screen w-screen -left-[50vw] ml-[50%] overflow-hidden">
+        <div className="relative h-screen w-full overflow-hidden">
           <RainbowWaves />
         </div>
       </div>
