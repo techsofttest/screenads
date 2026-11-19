@@ -9,11 +9,26 @@ const transitImage =
   "/banner/b3.png";
 
 const transitFeatures = [
-  "Reach passengers during their daily journeys.",
-  "Present your advertisements through digital screens.",
-  "Make your brand visible beyond conventional media.",
-  "Promote products, services, offers and events.",
-  "Create repeated brand exposure through regular bus journeys.",
+  {
+    title: "Daily Commuter Reach",
+    description: "Reach passengers during their daily journeys.",
+  },
+  {
+    title: "Digital Screen Impact",
+    description: "Present your advertisements through digital screens.",
+  },
+  {
+    title: "Beyond Conventional Media",
+    description: "Make your brand visible beyond conventional media.",
+  },
+  {
+    title: "Versatile Campaign Promotion",
+    description: "Promote products, services, offers and events.",
+  },
+  {
+    title: "Repeated Brand Exposure",
+    description: "Create repeated brand exposure through regular bus journeys.",
+  },
 ];
 
 export function TransitSection() {
@@ -85,19 +100,21 @@ export function TransitSection() {
               </p>
             </ScrollReveal>
 
-            <div className="grid gap-0 md:grid-cols-2">
+            <div>
               {transitFeatures.map((item, index) => (
                 <ScrollReveal
-                  key={item}
+                  key={item.title}
                   direction="up"
                   delay={0.1 + index * 0.07}
                 >
-                  <div className="flex gap-5 border-t border-[#212121]/20 py-5">
-                    <span className="font-display text-sm font-bold text-[#212121]">
-                      0{index + 1}
-                    </span>
+                  <div className="flex flex-col gap-1.5 border-t border-[#212121]/20 py-5">
+                    <h3 className="font-display text-2xl font-semibold tracking-[-0.02em] text-[#212121]">
+                      {item.title}
+                    </h3>
 
-                    <p className="text-base font-normal leading-7 text-[#212121]">{item}</p>
+                    <p className="text-base font-normal leading-7 text-[#212121]/85">
+                      {item.description}
+                    </p>
                   </div>
                 </ScrollReveal>
               ))}

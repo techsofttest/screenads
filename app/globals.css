@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-orange: #fc7f00;
+  --color-brand-tint: #fc7f002e;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #212121;
@@ -39,13 +44,22 @@ a {
   transition-timing-function: ease-out;
 }
 
-/* Hide default OS cursor globally across all browsers on desktop pointer devices */
-@media (pointer: fine) {
-  *,
-  *::before,
-  *::after {
-    cursor: none !important;
+/* Subtle glowing pulse & zoom animation for the logo */
+@keyframes logo-glow-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.35));
   }
+  50% {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 16px rgba(239, 68, 68, 0.75))
+            drop-shadow(0 0 26px rgba(249, 115, 22, 0.45));
+  }
+}
+
+.animate-logo-glow {
+  animation: logo-glow-pulse 3s ease-in-out infinite;
 }
 
 /* Hide default OS cursor globally across all browsers on desktop pointer devices */

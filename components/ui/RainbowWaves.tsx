@@ -3,15 +3,15 @@
 import { motion } from "framer-motion";
 
 export function RainbowWaves() {
-  // 7 stylish rainbow colors
+  // Alternating reusable brand tint orange and light grey waves
   const waves = [
-    { color: "#ff4d4d", opacity: 0.18, duration: 16, delay: 0 },   // Red
-    { color: "#ff944d", opacity: 0.20, duration: 20, delay: 1.5 }, // Orange
-    { color: "#ffd24d", opacity: 0.22, duration: 15, delay: 0.8 }, // Yellow
-    { color: "#4ddb92", opacity: 0.20, duration: 22, delay: 2.2 }, // Green
-    { color: "#4da8ff", opacity: 0.22, duration: 18, delay: 0.4 }, // Blue
-    { color: "#6e66ff", opacity: 0.20, duration: 21, delay: 2.0 }, // Indigo
-    { color: "#bf55ec", opacity: 0.18, duration: 17, delay: 1.2 }, // Violet
+    { color: "var(--color-brand-tint)", duration: 16, delay: 0 },   // Brand Tint Orange
+    { color: "#c0c0c078", duration: 20, delay: 1.5 },               // Light Grey
+    { color: "var(--color-brand-tint)", duration: 15, delay: 0.8 }, // Brand Tint Orange
+    { color: "#c0c0c078", duration: 22, delay: 2.2 },               // Light Grey
+    { color: "var(--color-brand-tint)", duration: 18, delay: 0.4 }, // Brand Tint Orange
+    { color: "#c0c0c078", duration: 21, delay: 2.0 },               // Light Grey
+    { color: "var(--color-brand-tint)", duration: 17, delay: 1.2 }, // Brand Tint Orange
   ];
 
   return (
@@ -42,7 +42,6 @@ export function RainbowWaves() {
               stroke={wave.color}
               strokeWidth={32}
               strokeLinecap="round"
-              strokeOpacity={wave.opacity}
               initial={{
                 d: `M${startX},${startY} C${300 + offset},${550 + offset} ${950 + offset},${250 - offset} ${endX},${endY}`,
               }}

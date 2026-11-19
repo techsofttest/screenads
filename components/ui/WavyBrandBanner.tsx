@@ -19,7 +19,7 @@ export function WavyBrandBanner({
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative w-full bg-[#181818] px-4 py-8 sm:py-4 md:py-6 overflow-hidden select-none cursor-pointer flex items-center justify-center ${className}`}
+      className={`relative w-full bg-brand-tint px-4 py-8 sm:py-4 md:py-6 overflow-hidden select-none cursor-pointer flex items-center justify-center ${className}`}
     >
       {/* SVG Grain filter specifically referenced by text */}
       <svg className="absolute h-0 w-0" aria-hidden="true">
@@ -33,7 +33,7 @@ export function WavyBrandBanner({
           />
           <feColorMatrix
             type="matrix"
-            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.45 0"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.15 0"
             result="coloredNoise"
           />
           <feComposite in="SourceGraphic" in2="coloredNoise" operator="in" />
@@ -42,7 +42,7 @@ export function WavyBrandBanner({
 
       <h1
         style={{ filter: "url(#letter-grain)" }}
-        className="font-display text-[16vw] max-w-full font-bold leading-none tracking-[-0.04em] text-white text-center whitespace-nowrap flex items-center justify-center relative z-10"
+        className="font-display text-[16vw] max-w-full font-bold leading-none tracking-[-0.04em] text-[#212121] text-center whitespace-nowrap flex items-center justify-center relative z-10"
       >
         {letters.map((char, index) => {
           if (char === " ") {

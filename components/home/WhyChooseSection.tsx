@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 const advantages = [
@@ -32,64 +33,56 @@ const advantages = [
 
 export function WhyChooseSection() {
   return (
-    <section className="bg-transparent px-4 py-24 text-[#212121] sm:px-6 lg:px-8 lg:py-36">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-16 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <ScrollReveal direction="down">
-              <p className="font-display text-xs font-bold uppercase tracking-widest text-[#212121]">
-                Why Choose Screen Ads?
-              </p>
-            </ScrollReveal>
+    <section className="bg-white text-[#212121]">
+      <div className="bg-brand-tint px-4 py-24 sm:px-6 lg:px-8 lg:py-36">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid items-stretch gap-12 lg:grid-cols-12 lg:gap-14">
+            {/* Left Vertical Image */}
+            <div className="lg:col-span-5">
+              <ScrollReveal direction="up" className="h-full">
+                <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden lg:aspect-auto lg:h-full lg:min-h-[540px]">
+                  <Image
+                    src="/content/strategy.jpg"
+                    alt="Creative advertising strategy"
+                    fill
+                    className="object-contain object-center transition-transform duration-700 hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 42vw"
+                  />
+                </div>
+              </ScrollReveal>
+            </div>
 
-            <ScrollReveal direction="up" delay={0.1}>
-              <h2 className="mt-7 font-display text-5xl font-semibold leading-[0.92] tracking-[-0.045em] text-[#212121] md:text-7xl">
-                Creative Ideas.
-                <br />
-                Strategic Execution.
-                <br />
-                Meaningful Visibility.
-              </h2>
-            </ScrollReveal>
-          </div>
+            {/* Right Content */}
+            <div className="lg:col-span-7">
+              <ScrollReveal direction="up" delay={0.1}>
+                <h2 className="font-display text-4xl font-semibold leading-[0.95] tracking-[-0.04em] text-[#212121] sm:text-5xl md:text-6xl xl:text-7xl">
+                  Creative Ideas.
+                  <br />
+                  Strategic Execution.
+                  <br />
+                  Meaningful Visibility.
+                </h2>
+              </ScrollReveal>
 
-          <div className="lg:col-span-7">
-            <ScrollReveal direction="up" delay={0.15}>
-              <p className="max-w-3xl text-lg font-normal leading-8 text-[#212121]">
-                We understand that advertising is more than just putting a
-                message in front of people. It is about reaching the right
-                audience with the right message through the right medium.
-              </p>
-            </ScrollReveal>
-
-            <div className="mt-14">
-              {advantages.map((advantage, index) => (
-                <ScrollReveal
-                  key={advantage.title}
-                  direction="up"
-                  delay={0.1 + index * 0.08}
-                >
-                  <div
-                    className="group grid gap-5 border-t border-[#212121]/20 py-7 md:grid-cols-12"
+              <div className="mt-10 lg:mt-12">
+                {advantages.map((advantage, index) => (
+                  <ScrollReveal
+                    key={advantage.title}
+                    direction="up"
+                    delay={0.1 + index * 0.08}
                   >
-                    <div className="font-display text-sm font-bold text-[#212121] md:col-span-1">
-                      0{index + 1}
-                    </div>
-
-                    <div className="md:col-span-4">
+                    <div className="flex flex-col gap-2 border-t border-[#212121]/20 py-6">
                       <h3 className="font-display text-2xl font-semibold tracking-[-0.02em] text-[#212121]">
                         {advantage.title}
                       </h3>
-                    </div>
 
-                    <div className="md:col-span-7">
-                      <p className="text-base font-normal leading-7 text-[#212121]">
+                      <p className="text-base font-normal leading-7 text-[#212121]/85">
                         {advantage.description}
                       </p>
                     </div>
-                  </div>
-                </ScrollReveal>
-              ))}
+                  </ScrollReveal>
+                ))}
+              </div>
             </div>
           </div>
         </div>
