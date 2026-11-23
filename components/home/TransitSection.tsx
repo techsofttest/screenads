@@ -81,23 +81,28 @@ export function TransitSection() {
         </ScrollReveal>
 
         <div className="grid gap-10 py-16 lg:grid-cols-12 lg:gap-12">
+          {/* Left Column: commuter image replacing previous text */}
           <div className="lg:col-span-5">
-            <ScrollReveal direction="up" delay={0.1}>
-              <p className="font-display text-3xl font-semibold leading-tight tracking-[-0.03em] text-[#212121] md:text-5xl">
-                Take your business message beyond traditional advertising spaces
-                and bring it directly into the daily journeys of commuters.
-              </p>
+            <ScrollReveal direction="up" delay={0.1} className="h-full">
+              <div className="relative aspect-[621/768] w-full overflow-hidden bg-black/5 lg:aspect-auto lg:h-full lg:min-h-[500px]">
+                <Image
+                  src="/content/commuterbus.png"
+                  alt="Daily journeys of commuters"
+                  fill
+                  className="object-cover object-center transition-transform duration-700 hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                />
+              </div>
             </ScrollReveal>
           </div>
 
           <div className="space-y-7 lg:col-span-7">
+            {/* Top Heading: "Take your business message..." replacing previous description */}
             <ScrollReveal direction="up" delay={0.15}>
-              <p className="text-lg font-normal leading-8 text-[#212121]">
-                Our digital bus advertising platform offers businesses an
-                opportunity to showcase their products, services and
-                promotional campaigns through digital screens inside private
-                fair stage buses.
-              </p>
+              <h3 className="font-display text-3xl font-semibold leading-tight tracking-[-0.03em] text-[#212121] md:text-5xl">
+                Take your business message beyond traditional advertising spaces
+                and bring it directly into the daily journeys of commuters.
+              </h3>
             </ScrollReveal>
 
             <div>

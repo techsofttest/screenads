@@ -37,18 +37,22 @@ export function Header() {
         <div className="relative flex items-center justify-end">
           <a
             href="#top"
-            className="group relative flex items-center justify-center py-1 will-change-transform"
+            className="group relative flex flex-col items-center justify-center py-0.5 will-change-transform leading-none"
             aria-label="Screen Ads Home"
           >
             {/* Logo Image with subtle breathing zoom and glow on itself */}
             <Image
               src="/logo/logo-min.png"
-              alt="Screen Ads"
+              alt="Screen Ads Logo"
               width={160}
               height={137}
-              className="h-9 sm:h-11 md:h-12 w-auto object-contain animate-logo-glow transition-transform duration-300"
+              className="h-6 sm:h-7 md:h-8 w-auto object-contain animate-logo-glow transition-transform duration-300"
               priority
             />
+            {/* Brand Name below logo */}
+            <span className="mt-1 font-display text-[11px] sm:text-xs font-bold tracking-tight text-white whitespace-nowrap">
+              Screen Ads
+            </span>
           </a>
         </div>
       </div>
