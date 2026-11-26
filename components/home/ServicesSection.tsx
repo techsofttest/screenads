@@ -51,23 +51,22 @@ interface CardProps {
 function Card({ service, index, progress, range, targetScale }: CardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Scale down the card smoothly as succeeding cards stack on top of it
   const scale = useTransform(progress, range, [1, targetScale]);
 
   return (
     <div
       ref={containerRef}
-      className="sticky top-0 flex h-screen items-center justify-center"
+      className="sticky top-0 flex min-h-0 items-start justify-center pt-2 sm:min-h-[85svh] sm:items-center sm:pt-0 lg:h-screen lg:min-h-0"
       style={{ zIndex: index + 1 }}
     >
       <motion.article
         style={{
           scale,
-          top: `calc(10vh + ${index * 32}px)`,
+          top: `calc(8vh + ${index * 24}px)`,
         }}
-        className="relative flex min-h-[480px] w-full flex-col justify-between overflow-hidden bg-[#161616] p-6 text-white origin-top sm:p-10 md:min-h-[560px] md:p-14 lg:p-16"
+        className="relative flex min-h-[440px] w-full origin-top flex-col justify-between overflow-hidden bg-[#161616] p-5 text-white sm:min-h-[520px] sm:p-8 md:min-h-[560px] md:p-12 lg:p-16"
       >
-        {/* Background Image from public/services */}
+        {/* Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Image
             src={service.image}
@@ -76,21 +75,21 @@ function Card({ service, index, progress, range, targetScale }: CardProps) {
             className="object-cover object-center transition duration-700 hover:scale-105"
             sizes="(max-width: 1280px) 100vw, 1280px"
           />
-          {/* Subtle top vignette for clear title readability without muddying the focal image */}
+
           <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/15 to-black/25" />
         </div>
 
-        {/* Top Left: Bold, clear service title */}
+        {/* Service Title */}
         <div className="relative z-10 max-w-3xl">
-          <h3 className="font-display text-4xl font-bold leading-[0.98] tracking-[-0.03em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:text-5xl md:text-6xl lg:text-7xl">
+          <h3 className="font-display text-3xl font-bold leading-[0.98] tracking-[-0.03em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] min-[480px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
             {service.title}
           </h3>
         </div>
 
-        {/* Bottom Left: Description with brand logo color overlay for high visibility */}
-        <div className="relative z-10 mt-12 flex justify-start">
-          <div className="max-w-xl bg-brand-orange/92 px-6 py-5 backdrop-blur-md md:px-8 md:py-6">
-            <p className="text-left text-base font-medium leading-relaxed text-white md:text-lg md:leading-7">
+        {/* Service Description */}
+        <div className="relative z-10 mt-10 flex justify-start sm:mt-12">
+          <div className="w-full max-w-xl bg-brand-orange/92 px-5 py-5 backdrop-blur-md sm:px-7 sm:py-6 md:px-8">
+            <p className="text-left text-sm font-medium leading-relaxed text-white sm:text-base md:text-lg md:leading-7">
               {service.description}
             </p>
           </div>
@@ -102,6 +101,7 @@ function Card({ service, index, progress, range, targetScale }: CardProps) {
 
 export function ServicesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -111,25 +111,25 @@ export function ServicesSection() {
     <section
       id="services"
       ref={containerRef}
-      className="relative bg-white px-4 pt-24 pb-32 text-[#212121] sm:px-6 lg:px-8"
+      className="relative bg-white px-4 pt-6 pb-20 text-[#212121] sm:px-6 sm:pt-20 sm:pb-24 md:pt-24 md:pb-28 lg:px-8 lg:pt-28 lg:pb-32"
     >
       <div className="mx-auto max-w-7xl">
-        {/* Centered Section Header */}
+        {/* Section Header */}
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <ScrollReveal direction="up" delay={0.1}>
-            <h2 className="font-display text-5xl font-semibold leading-[0.95] tracking-[-0.04em] text-[#212121] md:text-7xl">
+            <h2 className="font-display text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-[#212121] sm:text-4xl sm:leading-[0.98] md:text-5xl lg:text-6xl xl:text-7xl">
               Creative advertising built around visibility, connection and
               growth.
             </h2>
           </ScrollReveal>
 
-          {/* Centered CTA Button */}
-          <div className="mt-8 flex justify-center">
+          {/* CTA Button */}
+          <div className="mt-4 flex justify-center sm:mt-6">
             <ScrollReveal direction="up" delay={0.2}>
               <Button
                 href="/services"
                 variant="black"
-                className="gap-4 px-6 py-5"
+                className="gap-3 px-5 py-2 text-sm sm:gap-4 sm:px-6 sm:py-2 sm:text-base"
               >
                 Discover All Our Services
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -138,10 +138,11 @@ export function ServicesSection() {
           </div>
         </div>
 
-        {/* Stacking Track: full scroll height allowing cards to stick and pin on top of each other */}
-        <div className="relative mt-12">
+        {/* Stacking Service Cards */}
+        <div className="relative mt-0">
           {services.map((service, index) => {
             const targetScale = 1 - (services.length - index) * 0.04;
+
             return (
               <Card
                 key={service.title}

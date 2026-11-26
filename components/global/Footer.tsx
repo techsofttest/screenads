@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import {
   FaLinkedinIn,
@@ -16,29 +15,30 @@ export function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-white px-4 pt-24 pb-12 text-[#212121] sm:px-6 lg:px-8 lg:pt-36 lg:pb-14"
+      className="w-full overflow-hidden bg-white px-4 pt-16 pb-8 text-[#212121] sm:px-6 sm:pt-20 sm:pb-10 md:pt-24 lg:px-8 lg:pt-32 lg:pb-14"
     >
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-14 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-8">
+      <div className="mx-auto w-full max-w-7xl">
+        {/* Contact Heading */}
+        <div className="grid grid-cols-1 items-end gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="min-w-0 lg:col-span-8">
             <ScrollReveal direction="down">
-              <p className="font-display text-xs font-bold uppercase tracking-widest text-[#212121]/60">
+              <p className="font-display text-xs font-bold uppercase tracking-widest text-[#212121]/60 sm:text-sm">
                 Contact Us
               </p>
             </ScrollReveal>
 
             <ScrollReveal direction="up" delay={0.1}>
-              <h2 className="mt-7 font-display text-6xl font-semibold leading-[0.88] tracking-[-0.055em] text-[#212121] md:text-5xl lg:text-6xl">
+              <h2 className="mt-5 max-w-4xl font-display text-4xl font-semibold leading-[1.05] tracking-[-0.055em] text-[#212121] min-[400px]:text-5xl sm:mt-7 sm:text-5xl sm:leading-[0.95] md:text-6xl lg:text-6xl xl:text-6xl">
                 Ready to Put Your Brand in the Spotlight?
               </h2>
             </ScrollReveal>
 
             <ScrollReveal direction="up" delay={0.2}>
-              <div className="mt-8">
+              <div className="mt-7 sm:mt-9">
                 <Button
                   href="mailto:"
                   variant="primary"
-                  className="gap-3 px-6 py-3.5 text-sm"
+                  className="gap-3 px-5 py-3 text-sm sm:px-6 sm:py-3.5"
                 >
                   Contact Screen Ads
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
@@ -47,9 +47,10 @@ export function Footer() {
             </ScrollReveal>
           </div>
 
-          <div className="lg:col-span-4">
+          {/* Description */}
+          <div className="min-w-0 lg:col-span-4">
             <ScrollReveal direction="up" delay={0.2}>
-              <p className="text-lg font-normal leading-8 text-[#212121]/80">
+              <p className="max-w-xl text-base font-normal leading-7 text-[#212121]/80 sm:text-lg sm:leading-8 lg:ml-auto">
                 Let's create advertising that gets noticed, builds recognition
                 and brings your brand closer to its audience.
               </p>
@@ -57,32 +58,21 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Brand Box with Interactive Wavy Letters */}
-        <div className="mt-20">
+        {/* Brand Box */}
+        <div className="mt-14 w-full sm:mt-16 md:mt-20 lg:mt-24">
           <ScrollReveal direction="up" delay={0.15}>
-            <WavyBrandBanner text="Screen Ads" />
+            <div className="w-full">
+              <WavyBrandBanner text="Screen Ads" />
+            </div>
           </ScrollReveal>
         </div>
 
-        {/* Centered Brand Logo */}
-        {/* <div className="mt-16 flex justify-center">
-          <ScrollReveal direction="up" delay={0.2}>
-            <Image
-              src="/logo/logo-v3.png"
-              alt="Screen Ads Logo"
-              width={180}
-              height={60}
-              className="h-auto w-36 sm:w-44 md:w-52 object-contain"
-            />
-          </ScrollReveal>
-        </div> */}
-
-        {/* Bottom Bar matching reference image design */}
-        <div className="mt-12 border-t border-black/10 pt-8">
+        {/* Bottom Bar */}
+        <div className="mt-10 border-t border-black/10 pt-7 sm:mt-12 sm:pt-8 lg:mt-14">
           <ScrollReveal direction="up" delay={0.1}>
-            <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-              {/* Left Social Icons */}
-              <div className="flex items-center gap-5">
+            <div className="flex flex-col items-center justify-between gap-7 lg:flex-row lg:gap-6">
+              {/* Social Icons */}
+              <div className="flex items-center justify-center gap-6 sm:gap-7">
                 <a
                   href="https://linkedin.com"
                   target="_blank"
@@ -92,6 +82,7 @@ export function Footer() {
                 >
                   <FaLinkedinIn className="h-5 w-5" />
                 </a>
+
                 <a
                   href="https://instagram.com"
                   target="_blank"
@@ -101,6 +92,7 @@ export function Footer() {
                 >
                   <FaInstagram className="h-5 w-5" />
                 </a>
+
                 <a
                   href="https://youtube.com"
                   target="_blank"
@@ -110,6 +102,7 @@ export function Footer() {
                 >
                   <FaYoutube className="h-5 w-5" />
                 </a>
+
                 <a
                   href="https://facebook.com"
                   target="_blank"
@@ -121,26 +114,29 @@ export function Footer() {
                 </a>
               </div>
 
-              {/* Center Navigation Links */}
-              <nav className="flex flex-wrap items-center justify-center gap-6 text-xs sm:gap-8 sm:text-sm">
+              {/* Navigation Links */}
+              <nav className="flex max-w-2xl flex-wrap items-center justify-center gap-x-5 gap-y-3 text-xs sm:gap-x-7 sm:text-sm lg:gap-x-6">
                 <a
                   href="/contact"
                   className="font-medium text-[#212121]/80 transition-colors hover:text-black"
                 >
                   Contact
                 </a>
+
                 <a
                   href="/services"
                   className="font-medium text-[#212121]/80 transition-colors hover:text-black"
                 >
                   Services
                 </a>
+
                 <a
                   href="/terms"
                   className="font-medium text-[#212121]/80 transition-colors hover:text-black"
                 >
                   Terms and Services
                 </a>
+
                 <a
                   href="/privacy"
                   className="font-medium text-[#212121]/80 transition-colors hover:text-black"
@@ -149,17 +145,16 @@ export function Footer() {
                 </a>
               </nav>
 
-              {/* Right Copyright & Tagline */}
-              <div className="text-center text-xs leading-relaxed text-[#212121]/60 md:text-right">
-                <p className="mt-1">
-                  All Rights Reserved, All Wrongs Reversed. Screen Ads
-                </p>
+              {/* Copyright */}
+              <div className="max-w-full text-center text-xs leading-relaxed text-[#212121]/60 lg:text-right">
+                <p>All Rights Reserved, All Wrongs Reversed. Screen Ads</p>
+
                 <p className="mt-1">
                   <a
                     href="https://www.techsoftweb.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-normal transition-colors hover:text-black hover:underline underline-offset-4"
+                    className="font-normal underline-offset-4 transition-colors hover:text-black hover:underline"
                   >
                     Web Design Company in Kochi Techsoft
                   </a>
