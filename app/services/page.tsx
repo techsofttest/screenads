@@ -157,7 +157,7 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-white text-[#212121]">
       {/* HERO SECTION */}
       <section className="relative overflow-hidden bg-brand-tint">
-        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
+        <div className="mx-auto max-w-7xl px-6 pt-20 pb-24 lg:px-10 lg:pt-24 lg:pb-32">
           <div className="max-w-5xl">
             <p className="mb-6 text-sm font-semibold uppercase tracking-[0.25em] text-[#212121]/60">
               Our Services

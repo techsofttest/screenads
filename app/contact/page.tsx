@@ -13,7 +13,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-white text-[#212121]">
       {/* HERO SECTION */}
       <section className="relative overflow-hidden bg-brand-tint">
-        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
+        <div className="mx-auto max-w-7xl px-6 pt-20 pb-24 lg:px-10 lg:pt-24 lg:pb-32">
           <div className="max-w-4xl">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-[#212121]/60">
               Contact Us
@@ -149,7 +149,7 @@ export default function ContactPage() {
       {/* CONTACT FORM SECTION */}
       <section
         id="contact-form"
-        className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28"
+        className="mx-auto max-w-7xl px-6 pt-20 pb-8 lg:px-10 lg:pt-28 lg:pb-10"
       >
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <div>

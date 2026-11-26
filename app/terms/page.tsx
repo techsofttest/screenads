@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 export default function TermsPage() {
   return (
     <main className="min-h-screen bg-white text-[#212121]">
-      <section className="mx-auto max-w-5xl px-6 py-20 lg:py-28">
+      <section className="mx-auto max-w-5xl px-6 pt-20 pb-4 sm:pt-20 sm:pb-4 lg:pt-24 lg:pb-6">
         {/* Page Heading */}
         <div className="mb-12">
           <p className="font-display text-xs font-bold uppercase tracking-widest text-[#212121]/60">
