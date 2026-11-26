@@ -2,14 +2,22 @@
 
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { FaLinkedinIn, FaInstagram, FaYoutube, FaFacebookF } from "react-icons/fa6";
+import {
+  FaLinkedinIn,
+  FaInstagram,
+  FaYoutube,
+  FaFacebookF,
+} from "react-icons/fa6";
 import { Button } from "@/components/ui/Button";
 import { WavyBrandBanner } from "@/components/ui/WavyBrandBanner";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export function Footer() {
   return (
-    <footer id="contact" className="bg-white px-4 pt-24 pb-12 text-[#212121] sm:px-6 lg:px-8 lg:pt-36 lg:pb-14">
+    <footer
+      id="contact"
+      className="bg-white px-4 pt-24 pb-12 text-[#212121] sm:px-6 lg:px-8 lg:pt-36 lg:pb-14"
+    >
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-14 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
@@ -116,22 +124,36 @@ export function Footer() {
               {/* Center Navigation Links */}
               <nav className="flex flex-wrap items-center justify-center gap-6 text-xs sm:gap-8 sm:text-sm">
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="font-medium text-[#212121]/80 transition-colors hover:text-black"
                 >
                   Contact
                 </a>
                 <a
-                  href="#services"
+                  href="/services"
                   className="font-medium text-[#212121]/80 transition-colors hover:text-black"
                 >
                   Services
+                </a>
+                <a
+                  href="/terms"
+                  className="font-medium text-[#212121]/80 transition-colors hover:text-black"
+                >
+                  Terms and Services
+                </a>
+                <a
+                  href="/privacy"
+                  className="font-medium text-[#212121]/80 transition-colors hover:text-black"
+                >
+                  Privacy Policy
                 </a>
               </nav>
 
               {/* Right Copyright & Tagline */}
               <div className="text-center text-xs leading-relaxed text-[#212121]/60 md:text-right">
-                <p className="mt-1">All Rights Reserved, All Wrongs Reversed. Screen Ads</p>
+                <p className="mt-1">
+                  All Rights Reserved, All Wrongs Reversed. Screen Ads
+                </p>
                 <p className="mt-1">
                   <a
                     href="https://www.techsoftweb.com/"
