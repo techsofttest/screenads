@@ -10,13 +10,13 @@ export function Header() {
         <div className="flex items-center gap-2 sm:gap-3">
           <nav className="flex items-center gap-2 sm:gap-3">
             <a
-              href="#services"
+              href="/services"
               className="rounded-full border border-white/70 px-3 sm:px-4 py-1.5 text-xs font-semibold tracking-wide text-white transition hover:border-white hover:bg-white hover:text-red-600 sm:text-sm"
             >
               Services
             </a>
             <a
-              href="#contact"
+              href="/contact"
               className="rounded-full border border-white/70 px-3 sm:px-4 py-1.5 text-xs font-semibold tracking-wide text-white transition hover:border-white hover:bg-white hover:text-red-600 sm:text-sm"
             >
               Contact Us
@@ -24,7 +24,7 @@ export function Header() {
           </nav>
 
           <Button
-            href="#contact"
+            href="/contact"
             variant="white"
             className="!px-3 sm:!px-5 !py-1.5 sm:!py-2 text-xs md:text-sm"
           >
@@ -36,7 +36,7 @@ export function Header() {
         {/* Right-Aligned Logo with Subtle Zoom & Glow Effect */}
         <div className="relative flex items-center justify-end">
           <a
-            href="#top"
+            href="/"
             className="group relative flex flex-col items-center justify-center py-0.5 will-change-transform leading-none"
             aria-label="Screen Ads Home"
           >
@@ -59,5 +59,3 @@ export function Header() {
     </header>
   );
 }
-
-
