@@ -197,7 +197,7 @@ export default function ServicesPage() {
       {/* SERVICES NAVIGATION */}
       <section
         id="service-list"
-        className="mx-auto max-w-7xl px-6 py-16 lg:px-10"
+        className="mx-auto max-w-7xl px-6 pt-20 pb-2 lg:px-10"
       >
         <div className="flex flex-wrap gap-3">
           {services.map((service) => (
@@ -222,201 +222,129 @@ export default function ServicesPage() {
             id={service.id}
             className={`scroll-mt-20 ${
               index % 2 === 0 ? "bg-white" : "bg-brand-tint"
-            } py-20 lg:py-28`}
+            } py-16 lg:py-24`}
           >
             <div className="mx-auto max-w-7xl px-6 lg:px-10">
-              <div className="mb-12 flex items-center gap-4">
+              {/* SERVICE NUMBER */}
+              <div className="mb-10 flex items-center gap-4">
                 <span className="text-sm font-bold tracking-[0.2em] text-[#212121]/60">
                   SERVICE {service.number}
                 </span>
                 <div className="h-px flex-1 bg-[#212121]/20" />
               </div>
 
-              {index === 1 ? (
-                /* SERVICE 2 - TRANSIT ADVERTISING */
-                <div className="space-y-12">
-                  {/* FULL WIDTH INTRODUCTORY CONTENT */}
-                  <div>
-                    <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
-                      {service.title}
-                    </h2>
+              {/* FULL WIDTH SERVICE IMAGE */}
+              <div className="relative mb-12 aspect-[16/7] min-h-[240px] w-full overflow-hidden bg-white shadow-xl sm:min-h-[320px] lg:min-h-[420px]">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  priority={index === 0}
+                  sizes="(max-width: 1024px) 100vw, 1280px"
+                  className="object-cover transition duration-700 hover:scale-105"
+                />
 
-                    <h3 className="mt-5 text-xl font-semibold leading-snug text-[#212121]/75 md:text-2xl">
-                      {service.tagline}
-                    </h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
 
-                    <p className="mt-7 text-lg font-medium leading-8 text-[#212121]/85">
-                      {service.description}
-                    </p>
+                <div className="absolute bottom-5 left-5 flex h-14 w-14 items-center justify-center bg-brand-tint text-[#212121] sm:bottom-8 sm:left-8 sm:h-16 sm:w-16">
+                  <Icon size={30} />
+                </div>
+              </div>
 
-                    <p className="mt-4 text-base leading-8 text-[#212121]/70">
-                      {service.details}
-                    </p>
-                  </div>
+              {/* SERVICE CONTENT BELOW IMAGE */}
+              <div>
+                <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
+                  {service.title}
+                </h2>
 
-                  {/* FEATURES AND IMAGE */}
-                  <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
-                    {/* LEFT CONTENT */}
-                    <div>
-                      <div>
-                        <h4 className="mb-5 text-lg font-semibold">
-                          Why Digital Bus Screen Advertising?
-                        </h4>
+                <h3 className="mt-5 text-xl font-semibold leading-snug text-[#212121]/75 md:text-2xl">
+                  {service.tagline}
+                </h3>
 
-                        <ul className="grid gap-3 sm:grid-cols-2">
-                          {service.features.map((feature) => (
-                            <li
-                              key={feature}
-                              className="flex items-start gap-3 text-sm leading-6 text-[#212121]/80"
-                            >
-                              <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[#212121]/70" />
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                <p className="mt-7 text-lg font-medium leading-8 text-[#212121]/85">
+                  {service.description}
+                </p>
 
-                      {"idealFor" in service && service.idealFor && (
-                        <div className="mt-10">
-                          <h4 className="mb-5 text-lg font-semibold">
-                            Ideal for:
-                          </h4>
+                <p className="mt-4 text-base leading-8 text-[#212121]/70">
+                  {service.details}
+                </p>
 
-                          <ul className="grid gap-3 sm:grid-cols-2">
-                            {service.idealFor.map((item) => (
-                              <li
-                                key={item}
-                                className="flex items-start gap-3 text-sm leading-6 text-[#212121]/80"
-                              >
-                                <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[#212121]/70" />
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
+                {/* SERVICE FEATURES */}
+                <div className="mt-10">
+                  <h4 className="mb-5 text-lg font-semibold">
+                    {index === 1
+                      ? "Why Digital Bus Screen Advertising?"
+                      : "Our solutions include:"}
+                  </h4>
 
-                      {"closingLine" in service && service.closingLine && (
-                        <p className="mt-9 text-xl font-bold text-[#212121]/70">
-                          {service.closingLine}
-                        </p>
-                      )}
-
-                      <div className="mt-9 border-l-4 border-[#212121] bg-white/70 px-6 py-5">
-                        <p className="text-sm font-semibold uppercase tracking-wider text-[#212121]/70">
-                          Our Goal
-                        </p>
-                        <p className="mt-2 text-base leading-7 text-[#212121]/80">
-                          {service.goal}
-                        </p>
-                      </div>
-
-                      <Link
-                        href="/contact"
-                        className="group mt-8 inline-flex items-center gap-3 bg-[#212121] px-6 py-4 text-sm font-semibold text-white transition hover:bg-brand-orange"
+                  <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {service.features.map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-start gap-3 text-sm leading-7 text-[#212121]/80"
                       >
-                        Book Your Bus Screen Advertisement
-                        <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                      </Link>
-                    </div>
-
-                    {/* RIGHT IMAGE */}
-                    <div className="relative aspect-[4/3] overflow-hidden bg-white shadow-xl">
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-cover transition duration-700 hover:scale-105"
-                      />
-
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
-
-                      <div className="absolute bottom-6 left-6 flex h-16 w-16 items-center justify-center bg-brand-tint text-[#212121]">
-                        <Icon size={30} />
-                      </div>
-                    </div>
-                  </div>
+                        <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[#212121]/70" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              ) : (
-                /* ORIGINAL LAYOUT FOR SERVICES 1, 3 AND 4 */
-                <div
-                  className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-20 ${
-                    index % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""
-                  }`}
-                >
-                  {/* IMAGE */}
-                  <div className="relative aspect-[4/3] overflow-hidden bg-white shadow-xl">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      priority={index === 0}
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover transition duration-700 hover:scale-105"
-                    />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
+                {/* IDEAL FOR - TRANSIT ADVERTISING */}
+                {"idealFor" in service && service.idealFor && (
+                  <div className="mt-10">
+                    <h4 className="mb-5 text-lg font-semibold">Ideal for:</h4>
 
-                    <div className="absolute bottom-6 left-6 flex h-16 w-16 items-center justify-center bg-brand-tint text-[#212121]">
-                      <Icon size={30} />
-                    </div>
+                    <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                      {service.idealFor.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-3 text-sm leading-7 text-[#212121]/80"
+                        >
+                          <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[#212121]/70" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
+                )}
 
-                  {/* CONTENT */}
-                  <div>
-                    <h2 className="font-display text-4xl font-semibold leading-tight tracking-[-0.04em] md:text-5xl">
-                      {service.title}
-                    </h2>
+                {/* CLOSING LINE - TRANSIT ADVERTISING */}
+                {"closingLine" in service && service.closingLine && (
+                  <p className="mt-10 text-xl font-bold text-[#212121]/75">
+                    {service.closingLine}
+                  </p>
+                )}
 
-                    <h3 className="mt-5 text-xl font-semibold leading-snug text-[#212121]/75 md:text-2xl">
-                      {service.tagline}
-                    </h3>
+                {/* OUR GOAL */}
+                <div className="mt-10 border-l-4 border-[#212121] bg-white/70 px-6 py-5">
+                  <p className="text-sm font-semibold uppercase tracking-wider text-[#212121]/70">
+                    Our Goal
+                  </p>
 
-                    <p className="mt-7 text-lg font-medium leading-8 text-[#212121]/85">
-                      {service.description}
-                    </p>
-
-                    <p className="mt-4 text-base leading-8 text-[#212121]/70">
-                      {service.details}
-                    </p>
-
-                    <div className="mt-9">
-                      <h4 className="mb-5 text-lg font-semibold">
-                        Our solutions include:
-                      </h4>
-
-                      <ul className="grid gap-3 sm:grid-cols-2">
-                        {service.features.map((feature) => (
-                          <li
-                            key={feature}
-                            className="flex items-start gap-3 text-sm leading-6 text-[#212121]/80"
-                          >
-                            <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[#212121]/70" />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="mt-9 border-l-4 border-[#212121] bg-white/70 px-6 py-5">
-                      <p className="text-sm font-semibold uppercase tracking-wider text-[#212121]/70">
-                        Our Goal
-                      </p>
-                      <p className="mt-2 text-base leading-7 text-[#212121]/80">
-                        {service.goal}
-                      </p>
-                    </div>
-                  </div>
+                  <p className="mt-2 text-base leading-7 text-[#212121]/80">
+                    {service.goal}
+                  </p>
                 </div>
-              )}
+
+                {/* TRANSIT ADVERTISING CTA */}
+                {index === 1 && (
+                  <Link
+                    href="/contact#contact-form"
+                    className="group mt-8 inline-flex items-center gap-3 bg-[#212121] px-6 py-4 text-sm font-semibold text-white transition hover:bg-brand-orange"
+                  >
+                    Book Your Bus Screen Advertisement
+                    <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                )}
+              </div>
             </div>
           </section>
         );
       })}
 
       {/* OUR APPROACH */}
-      <section className="bg-brand-tint px-6 py-24 lg:px-10 lg:py-32">
+      <section className="bg-brand-tint px-6 pt-10 pb-10 lg:px-10 lg:pt-10 pb-20">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto mb-16 max-w-4xl text-center">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-[#212121]/60">

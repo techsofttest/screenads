@@ -147,7 +147,10 @@ export default function ContactPage() {
       </section>
 
       {/* CONTACT FORM SECTION */}
-      <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+      <section
+        id="contact-form"
+        className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28"
+      >
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#212121]/60">

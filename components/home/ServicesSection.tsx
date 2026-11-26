@@ -48,13 +48,7 @@ interface CardProps {
   targetScale: number;
 }
 
-function Card({
-  service,
-  index,
-  progress,
-  range,
-  targetScale,
-}: CardProps) {
+function Card({ service, index, progress, range, targetScale }: CardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Scale down the card smoothly as succeeding cards stack on top of it
@@ -133,7 +127,7 @@ export function ServicesSection() {
           <div className="mt-8 flex justify-center">
             <ScrollReveal direction="up" delay={0.2}>
               <Button
-                href="#contact"
+                href="/services"
                 variant="black"
                 className="gap-4 px-6 py-5"
               >

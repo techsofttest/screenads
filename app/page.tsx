@@ -33,7 +33,7 @@ export default function Home() {
       "#fa6565ff", // Crisp White Break
       "#fac562ff", // Warm Butter Peach
       "#fc5889ff", // Soft Blossom Pink
-    ]
+    ],
   );
 
   return (

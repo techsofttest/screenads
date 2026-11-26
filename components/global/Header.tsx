@@ -24,7 +24,12 @@ export function Header() {
           </nav>
 
           <Button
-            href="/contact"
+            href={
+              typeof window !== "undefined" &&
+              window.location.pathname === "/contact"
+                ? "#contact-form"
+                : "/contact#contact-form"
+            }
             variant="white"
             className="!px-3 sm:!px-5 !py-1.5 sm:!py-2 text-xs md:text-sm"
           >
