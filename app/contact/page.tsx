@@ -7,6 +7,7 @@ import {
   Phone,
   MessageCircle,
   Building2,
+  Mail,
 } from "lucide-react";
 
 export default function ContactPage() {
@@ -107,7 +108,7 @@ export default function ContactPage() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* OFFICE ADDRESS */}
           <div className="rounded-3xl bg-brand-tint p-8 md:p-10">
             <div className="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-[#212121]">
@@ -160,6 +161,37 @@ export default function ContactPage() {
               >
                 <Phone size={17} />
                 9961246916
+              </a>
+            </div>
+          </div>
+
+          {/* EMAIL ADDRESS */}
+          <div className="rounded-3xl bg-brand-tint p-8 md:p-10">
+            <div className="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-[#212121]">
+              <Mail size={27} />
+            </div>
+
+            <h3 className="mb-4 text-xl font-semibold">Email Us</h3>
+
+            <p className="mb-6 text-base leading-7 text-[#212121]/65">
+              Have questions or need more information? Send us an email.
+            </p>
+
+            <div className="space-y-4">
+              <a
+                href="mailto:info@screenads.co.in"
+                className="flex items-center gap-3 text-sm font-semibold transition hover:text-[#212121]/60 break-all"
+              >
+                <Mail size={17} className="shrink-0" />
+                info@screenads.co.in
+              </a>
+
+              <a
+                href="mailto:Screenads2021@gmail.com"
+                className="flex items-center gap-3 text-sm font-semibold transition hover:text-[#212121]/60 break-all"
+              >
+                <Mail size={17} className="shrink-0" />
+                Screenads2021@gmail.com
               </a>
             </div>
           </div>
@@ -232,6 +264,7 @@ export default function ContactPage() {
 
               <div>
                 <p className="font-semibold">Let's start a conversation</p>
+
                 <p className="mt-1 text-sm text-[#212121]/60">
                   We would love to hear from you.
                 </p>
@@ -329,16 +362,21 @@ export default function ContactPage() {
                   <option value="" disabled>
                     Select a service
                   </option>
+
                   <option value="Branding & Advertising">
                     Branding & Advertising
                   </option>
+
                   <option value="Transit Advertising – Digital Bus Screen Advertising">
                     Transit Advertising – Digital Bus Screen Advertising
                   </option>
+
                   <option value="Digital Marketing">Digital Marketing</option>
+
                   <option value="Social Media Marketing">
                     Social Media Marketing
                   </option>
+
                   <option value="other">Other</option>
                 </select>
               </div>
