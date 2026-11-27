@@ -1,6 +1,7 @@
-import Link from "next/link";
+"use client";
+
+import { useState } from "react";
 import {
-  ArrowLeft,
   ArrowUpRight,
   MapPin,
   Phone,
@@ -9,6 +10,56 @@ import {
 } from "lucide-react";
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (isSubmitting) return;
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    setIsSubmitting(true);
+    setSubmitError("");
+    setIsSubmitted(false);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          service: formData.get("service"),
+          message: formData.get("message"),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Failed to send your enquiry.");
+      }
+
+      setIsSubmitted(true);
+      form.reset();
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main className="min-h-screen bg-white text-[#212121]">
       {/* HERO SECTION */}
@@ -198,7 +249,8 @@ export default function ContactPage() {
               Share your details and requirements with us.
             </p>
 
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* NAME */}
               <div>
                 <label
                   htmlFor="name"
@@ -209,12 +261,16 @@ export default function ContactPage() {
 
                 <input
                   id="name"
+                  name="name"
                   type="text"
+                  required
+                  autoComplete="name"
                   placeholder="Enter your name"
                   className="w-full rounded-xl border border-[#212121]/20 bg-brand-tint px-4 py-3.5 text-sm outline-none transition focus:border-[#212121] focus:bg-white"
                 />
               </div>
 
+              {/* EMAIL */}
               <div>
                 <label
                   htmlFor="email"
@@ -225,12 +281,16 @@ export default function ContactPage() {
 
                 <input
                   id="email"
+                  name="email"
                   type="email"
+                  required
+                  autoComplete="email"
                   placeholder="Enter your email address"
                   className="w-full rounded-xl border border-[#212121]/20 bg-brand-tint px-4 py-3.5 text-sm outline-none transition focus:border-[#212121] focus:bg-white"
                 />
               </div>
 
+              {/* PHONE */}
               <div>
                 <label
                   htmlFor="phone"
@@ -241,12 +301,16 @@ export default function ContactPage() {
 
                 <input
                   id="phone"
+                  name="phone"
                   type="tel"
+                  required
+                  autoComplete="tel"
                   placeholder="Enter your phone number"
                   className="w-full rounded-xl border border-[#212121]/20 bg-brand-tint px-4 py-3.5 text-sm outline-none transition focus:border-[#212121] focus:bg-white"
                 />
               </div>
 
+              {/* SERVICE */}
               <div>
                 <label
                   htmlFor="service"
@@ -257,22 +321,29 @@ export default function ContactPage() {
 
                 <select
                   id="service"
+                  name="service"
                   defaultValue=""
+                  required
                   className="w-full rounded-xl border border-[#212121]/20 bg-brand-tint px-4 py-3.5 text-sm outline-none transition focus:border-[#212121] focus:bg-white"
                 >
                   <option value="" disabled>
                     Select a service
                   </option>
-                  <option value="branding">Branding Solutions</option>
-                  <option value="bus-advertising">
-                    Digital Bus Screen Advertising
+                  <option value="Branding & Advertising">
+                    Branding & Advertising
                   </option>
-                  <option value="digital-marketing">Digital Marketing</option>
-                  <option value="social-media">Social Media Promotions</option>
+                  <option value="Transit Advertising – Digital Bus Screen Advertising">
+                    Transit Advertising – Digital Bus Screen Advertising
+                  </option>
+                  <option value="Digital Marketing">Digital Marketing</option>
+                  <option value="Social Media Marketing">
+                    Social Media Marketing
+                  </option>
                   <option value="other">Other</option>
                 </select>
               </div>
 
+              {/* REQUIREMENTS */}
               <div>
                 <label
                   htmlFor="message"
@@ -283,18 +354,44 @@ export default function ContactPage() {
 
                 <textarea
                   id="message"
+                  name="message"
                   rows={5}
+                  required
                   placeholder="Tell us a little about your project..."
                   className="w-full resize-none rounded-xl border border-[#212121]/20 bg-brand-tint px-4 py-3.5 text-sm outline-none transition focus:border-[#212121] focus:bg-white"
                 />
               </div>
 
+              {/* ERROR MESSAGE */}
+              {submitError && (
+                <p
+                  role="alert"
+                  className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600"
+                >
+                  {submitError}
+                </p>
+              )}
+
+              {/* SUCCESS MESSAGE */}
+              {isSubmitted && (
+                <div
+                  role="status"
+                  className="rounded-xl bg-green-50 px-4 py-3 text-sm leading-6 text-green-700"
+                >
+                  Thank you! Your enquiry has been sent successfully. We will
+                  get back to you soon.
+                </div>
+              )}
+
+              {/* SUBMIT BUTTON */}
               <button
-                type="button"
-                className="flex w-full items-center justify-center gap-3 rounded-xl bg-[#212121] px-6 py-4 text-sm font-semibold text-white transition hover:bg-brand-orange hover:text-[#212121]"
+                type="submit"
+                disabled={isSubmitting}
+                className="flex w-full items-center justify-center gap-3 rounded-xl bg-[#212121] px-6 py-4 text-sm font-semibold text-white transition hover:bg-brand-orange hover:text-[#212121] disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Send Enquiry
-                <ArrowUpRight size={18} />
+                {isSubmitting ? "Sending Enquiry..." : "Send Enquiry"}
+
+                {!isSubmitting && <ArrowUpRight size={18} />}
               </button>
 
               <p className="text-center text-xs leading-5 text-[#212121]/50">
